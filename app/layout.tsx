@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/header";
+import Sidebar from "@/components/sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,7 +21,12 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.className} antialiased`}>
           <Header />
-          {children}
+          <div className="flex min-h-screen">
+            <Sidebar />
+            <div className="flex-1 p-5 overflow-y-uaot scrollbar-hide bg-gray-50">
+              {children}
+            </div>
+          </div>
         </body>
       </html>
     </ClerkProvider>
